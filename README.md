@@ -1,46 +1,46 @@
-# Getting Started with Create React App
+**Besides providing exceptional transportation services, Cabify also runs a physical store which sells (only) 3 products:**
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Example image](./example.png?raw=true)
 
-## Available Scripts
+The current prices of the products are the following:
+```
+Code         | Name                |  Price
+-------------------------------------------------
+CAP          | Cabify Cap          |   5.00€
+TSHIRT       | Cabify T-Shirt      |  20.00€
+MUG          | Cafify Coffee Mug   |   7.50€
+```
 
-In the project directory, you can run:
+And we are offering users these discounts:
+ * 2-for-1 promotions: buy two of the same product, get one free, applied to `CAP` items.
+ * bulk discounts: buying 3 or more of `TSHIRT` product, the price of that product is reduced 5%. E.g., if you buy 3 or more `TSHIRT` items, the price per unit should be 19.00€.
 
-### `npm start`
+Our top UI engineer has already made an initial implementation of the store with vanilla html and css, but it lacks the implementation.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+**Using the framework/library of your choice you have to:**
+- Implement the cart logic with the following **requisites**:
+  - Have a Checkout class, that **can** be instantiated with products and discounts available.
+  - Allow adding products to the checkout with the `scan` method, passing the product ID as `string` in his first argument.
+  - Allow calculating the total price with the `total` method, which won't accept any arguments and will return the total price (discount already applied) as `number`.
+    Example of how it would work:
+    ```javascript
+      const co = new Checkout(pricingRules);
+      co.scan("TSHIRT").scan("CAP").scan("TSHIRT");
+      const totalPrice = co.total();
+    ```
+  - Add any extra method you may need to fulfill UI requirements
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- Properly decompose the markup in components or whatever it suits you better to make it a production ready App.
 
-### `npm test`
+- Add the presentation logic to update "Order summary" subsection whenever a product is added or removed.
+You should use the `Checkout` class to get the total and discounts
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+**Take into account the following aspects:**
+- Have notes attached, explaining the solution and why certain things are included and others are left out.
+- Deliver production ready code.
+- Provide a solution that could be easy to grow and easy to add new functionality.
+- You can add any UX / UI improvements you consider, but we are going to focus on the requested features.
+We value succinctness.
+- When in doubt, act as a product owner
+- [BONUS]: our UI engineer hadn't time either to work on the product details modal which you can see in the `/bonus` folder. It would be a plus if you could implement it.
