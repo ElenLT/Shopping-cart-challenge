@@ -1,0 +1,11 @@
+@import url('../../styles/global.css');
+
+h2 {
+  color: #717285;
+  letter-spacing: 0;
+  font-weight: 300;
+}
+
+h2 + * {
+  margin-top: 16px;
+}
