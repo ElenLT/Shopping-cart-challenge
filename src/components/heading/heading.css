@@ -1,0 +1,8 @@
+@import url(../../styles/global.css);
+
+h1 {
+  position: relative;
+  letter-spacing: -0.18px;
+  font-size: 18px;
+  line-height: 24px;
+}
