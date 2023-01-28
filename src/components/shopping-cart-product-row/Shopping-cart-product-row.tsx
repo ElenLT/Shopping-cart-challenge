@@ -1,3 +1,4 @@
+import { CheckoutContext } from 'context/CheckoutContext';
 import IProduct from '../../models/product';
 import CounterButton from '../counter-button/Counter-button';
 import ProductDetails from '../product-details/Product-details';

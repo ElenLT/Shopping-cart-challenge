@@ -1,3 +1,4 @@
+import Heading from 'components/heading/Heading';
 import ShoppingCartHeader from 'components/shopping-cart-header/Shopping-cart-header';
 import ShoppingCartRow from 'components/shopping-cart-product-row/Shopping-cart-product-row';
 import './shopping-cart.css';
@@ -25,11 +26,11 @@ function ShoppingCart() {
       currency: '€',
       image: './assets/img/shirt.png',
     },
-  ]; // TODO: viene dado por la clase checkout
+  ];
 
   return (
     <section className="products">
-      <h1 className="main">Shopping cart</h1>
+      <Heading>Shopping cart</Heading>
 
       <ShoppingCartHeader />
 
