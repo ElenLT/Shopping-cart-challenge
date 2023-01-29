@@ -1,9 +1,9 @@
 import { createContext } from 'react';
-import ICheckout from 'models/checkout';
+import Checkout from 'models/checkout';
 
 export interface CheckoutContextProps {
-  checkoutContext: ICheckout;
-  setCheckoutContext: (value: ICheckout) => void;
+  checkoutContext: Checkout;
+  setCheckoutContext: (value: Checkout) => void;
 }
 
 export const CheckoutContext = createContext({});

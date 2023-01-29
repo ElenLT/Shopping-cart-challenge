@@ -1,4 +1,4 @@
-import './Product-details.css';
+import './product-details.css';
 
 interface ProductDetailsProps {
   productImage: string;
@@ -11,16 +11,15 @@ function ProductDetails({
   productName,
   productCode,
 }: ProductDetailsProps) {
-  console.log('soy imagen', productImage); // FIXME:
+  // eslint-disable-next-line global-require, @typescript-eslint/quotes, import/no-dynamic-require,
+  const image = require(`../../assets/images/${productImage}`);
   return (
     <div className="col-product">
       <figure className="product-image">
-        <img src={productImage} alt={productName} />
+        <img src={image} alt={productName} />
         <div className="product-description">
           <h1>{productName}</h1>
-          <p className="product-code">
-            Product code
-            {productCode}
+          <p className="product-code">Product code {productCode}
           </p>
         </div>
       </figure>

@@ -1,14 +1,20 @@
-import React from 'react';
-import './App.css';
-import CheckoutProvider from 'context/CheckoutProvider';
-import Checkout from './pages/Checkout/Checkout';
+import React, { useContext, useEffect } from 'react';
+import { CheckoutContext, CheckoutContextProps } from 'context/CheckoutContext';
+import Checkout from 'models/checkout';
+import pricingRules from 'mocks/pricingRules';
+import CheckoutPage from 'pages/Checkout/Checkout.page';
 
 function App() {
-  return (
-    <CheckoutProvider>
-      <Checkout />
-    </CheckoutProvider>
-  );
+  const { checkoutContext, setCheckoutContext } = useContext(
+    CheckoutContext
+  ) as CheckoutContextProps;
+
+  useEffect(() => {
+    const checkout = new Checkout(pricingRules);
+    setCheckoutContext(checkout);
+  }, []);
+
+  return <CheckoutPage />;
 }
 
 export default App;

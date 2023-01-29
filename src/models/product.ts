@@ -2,8 +2,8 @@ interface IProduct {
   name: string;
   code: string;
   price: number;
-  currency: string;
   image: string;
+  quantity: number;
 }
 
 export default IProduct;

@@ -4,28 +4,33 @@ import Button from 'components/button/Button';
 import './order-summary.css';
 import Heading from 'components/heading/Heading';
 import ItemsSummary from 'components/items-summary/Items-summary';
+import { CheckoutContext, CheckoutContextProps } from 'context/CheckoutContext';
+import { useContext } from 'react';
 
 function OrderSummary() {
-  const myDiscounts = [
-    { discountName: '2x1 Mug offer', discountValue: 7.5 },
+  const { checkoutContext } = useContext(
+    CheckoutContext
+  ) as CheckoutContextProps;
 
-    { discountName: 'x3 Shirt offer', discountValue: 3 },
-  ];
-  const totalItems = '11 items';
-  const totalPrice = 120;
-  const currency = '€';
   return (
     <aside className="summary">
       <Heading>Order Summary</Heading>
-      <ItemsSummary
-        totalItems={totalItems}
-        totalPrice={totalPrice}
-        currency={currency}
-      />
-      <DiscountList discounts={myDiscounts} />
-
-      <TotalCost />
-      <Button>Checkout</Button>
+      {checkoutContext?.totalProducts
+      && checkoutContext?.totalPriceWithoutDisc && (
+        <>
+          <ItemsSummary
+            totalItems={checkoutContext.totalProducts()}
+            totalPrice={checkoutContext.totalPriceWithoutDisc()}
+            currency={checkoutContext.currency}
+          />
+          <DiscountList discounts={checkoutContext.discounts} />
+          <TotalCost
+            totalPrice={checkoutContext.total()}
+            currency={checkoutContext.currency}
+          />
+          <Button>Checkout</Button>
+        </>
+      )}
     </aside>
   );
 }

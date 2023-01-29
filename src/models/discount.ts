@@ -1,6 +1,8 @@
+import IProduct from './product';
+
 interface IDiscount {
   discountName: string;
-  discountValue: number;
+  getDiscount: (products: IProduct[]) => number;
 }
 
 export default IDiscount;

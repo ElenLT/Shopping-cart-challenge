@@ -11,12 +11,14 @@ function DiscountList({ discounts }: DiscountListProps) {
     <div className="summary-discounts wrapper-half border">
       <h2>Discounts</h2>
       <ul>
-        {discounts.map((item) => (
-          <Discount
-            discountName={item.discountName}
-            discountValue={item.discountValue}
-          />
-        ))}
+        {discounts.map((item) => {
+          return (
+            <Discount
+              key={item.discountName}
+              discount={item}
+            />
+          );
+        })}
       </ul>
     </div>
   );

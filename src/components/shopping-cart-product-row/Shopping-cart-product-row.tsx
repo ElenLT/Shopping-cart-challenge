@@ -1,4 +1,6 @@
-import { CheckoutContext } from 'context/CheckoutContext';
+import { CheckoutContext, CheckoutContextProps } from 'context/CheckoutContext';
+import Checkout from 'models/checkout';
+import { useContext, useState } from 'react';
 import IProduct from '../../models/product';
 import CounterButton from '../counter-button/Counter-button';
 import ProductDetails from '../product-details/Product-details';
@@ -9,22 +11,63 @@ interface ShoppingCartRowProps {
 }
 
 function ShoppingCartRow({ product }: ShoppingCartRowProps) {
-  const productQuantity = 0;
+  const [productRow, setProductRow] = useState(product);
+
+  const { checkoutContext, setCheckoutContext } = useContext(
+    CheckoutContext
+  ) as CheckoutContextProps;
+
+  const {
+    image, code, name, price, quantity
+  } = productRow;
+
+  const onChangeCounter = (counter: number, operation: string) => {
+    setProductRow({
+      ...productRow,
+      quantity: counter
+    });
+    if (checkoutContext.scan && operation === 'add') {
+      const newProducts = checkoutContext.scan(code);
+      setCheckoutContext(new Checkout({
+        products: newProducts,
+        discounts: checkoutContext.discounts,
+        currency: checkoutContext.currency,
+      }));
+    }
+
+    if (checkoutContext.remove && operation === 'remove') {
+      const newProducts = checkoutContext.remove(code);
+      setCheckoutContext(
+        new Checkout({
+          products: newProducts,
+          discounts: checkoutContext.discounts,
+          currency: checkoutContext.currency
+        })
+      );
+    }
+  };
+
   return (
     <li className="product row">
       <ProductDetails
-        productImage={product.image}
-        productCode={product.code}
-        productName={product.name}
+        productImage={image}
+        productCode={code}
+        productName={name}
       />
-      <CounterButton productQuantity={productQuantity} />
+      <CounterButton
+        productQuantity={quantity}
+        onChangeCounter={onChangeCounter}
+      />
       <div className="col-price">
-        <span className="product-price">{product.price}</span>
-        <span className="product-currency currency">{product.currency}</span>
+        <span className="product-price">
+          {price}
+          {checkoutContext.currency}
+        </span>
       </div>
       <div className="col-total">
-        <span className="product-price">{product.price * productQuantity}</span>
-        <span className="product-currency currency">{product.currency}</span>
+        <span className="product-price">
+          {price * quantity}{checkoutContext.currency}
+        </span>
       </div>
     </li>
   );
