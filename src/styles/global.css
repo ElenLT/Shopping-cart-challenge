@@ -153,8 +153,7 @@ h2,
   line-height: 17px;
 }
 
-.wrapper.border,
-.wrapper-half.border {
+.wrapper.border {
   border-bottom: 1px solid rgba(33, 34, 64, 0.16);
 }
 
@@ -255,7 +254,7 @@ body {
   margin: 0;
   padding: 0;
   height: 100vh;
-  background-image: url('../assets/img/background.png');
+  background-image: url('../assets/images/background.png');
   background-color: #212240;
   background-position: top left;
   background-size: cover;
@@ -286,4 +285,18 @@ body {
 
 [class*='col-']:nth-child(n + 2) {
   justify-content: center;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
 }
