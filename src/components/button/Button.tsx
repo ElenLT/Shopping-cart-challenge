@@ -1,4 +1,4 @@
-import './Button.css';
+import './button.css';
 
 function Button({ children }: { children: string }) {
   return <button type="submit">{children}</button>;
