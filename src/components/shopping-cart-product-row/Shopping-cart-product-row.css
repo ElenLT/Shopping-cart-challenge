@@ -1,0 +1,10 @@
+@import url(../../styles/global.css);
+
+.product-price {
+  color: #000000;
+  font-size: 16px;
+}
+
+.currency {
+  margin-left: 4px;
+}
