@@ -5,15 +5,16 @@
 
 Having the following data:
 
+````
 Code         | Name                |  Price
 -------------------------------------------------
 CAP          | Cabify Cap          |   5.00€
 TSHIRT       | Cabify T-Shirt      |  20.00€
 MUG          | Cafify Coffee Mug   |   7.50€
-
+````
 
 - 2-for-1 promotions: buy two of the same product, get one free, applied to `CAP` items.
-- bulk discounts: buying 3 or more of `TSHIRT` product, the price of that product is reduced 5%. .
+- bulk discounts: buying 3 or more of `TSHIRT` product, the price of that product is reduced 5%.
 
 
 Implement a cart logic with:
